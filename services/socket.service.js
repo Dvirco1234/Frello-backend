@@ -13,7 +13,7 @@ function setupSocketAPI(http) {
         socket.on('disconnect', socket => {
             logger.info(`Socket disconnected [id: ${socket.id}]`)
         })
-        socket.on('chat-set-topic', topic => {
+        socket.on('set-topic-board', topic => {
             if (socket.myTopic === topic) return
             if (socket.myTopic) {
                 socket.leave(socket.myTopic)
@@ -42,7 +42,11 @@ function setupSocketAPI(http) {
             logger.info(`Removing socket.userId for socket [id: ${socket.id}]`)
             delete socket.userId
         })
-
+        socket.on('update-board', board => {
+            console.log('board:', board)
+            gIo.to(socket.myTopic).emit('board-updated', board)
+            // broadcast({type: 'board-updated', data: board.fullname , boardId: board._id })
+        })
     })
 }
 
