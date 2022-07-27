@@ -49,7 +49,7 @@ function validateToken(loginToken) {
         return loggedinUser
 
     } catch(err) {
-        console.log('Invalid login token')
+        console.log('Boardd login token')
     }
     return null
 }
