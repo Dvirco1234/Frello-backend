@@ -8,7 +8,7 @@ async function query(filterBy = {isTemplate: false}) {
         const criteria = _buildCriteria(filterBy)
         const collection = await dbService.getCollection('board')
         const boards = await collection.find(criteria).toArray()
-        console.log(boards);
+        // console.log(boards);
         return boards
     } catch (err) {
         logger.error('cannot find boards', err)
@@ -57,7 +57,7 @@ async function update(board) {
         const collection = await dbService.getCollection('board')
         await collection.updateOne({ _id: id }, { $set: { ...board } })
         board._id = id
-        console.log('board:', board)
+        // console.log('board:', board)
         return board
     } catch (err) {
         logger.error(`cannot update board ${board._id}`, err)
