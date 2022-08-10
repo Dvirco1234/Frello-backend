@@ -43,7 +43,7 @@ function setupSocketAPI(http) {
             delete socket.userId
         })
         socket.on('update-board', board => {
-            console.log('board:', board)
+            // console.log('board:', board)
             // gIo.to(socket.myTopic).emit('board-updated', board)
             broadcast({type: 'board-updated', data: board , boardId: board._id })
         })
