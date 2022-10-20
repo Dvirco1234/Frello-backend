@@ -47,8 +47,7 @@ function setupSocketAPI(http) {
         //     broadcast({type: 'board-updated', data: updatedBoard , userId })
         // })
         socket.on('update-board', board => {
-            // console.log('board:', board)
-            // socket.broadcast.to(socket.board._id).emit('board-updated', board)
+            console.log('board:', board)
             // gIo.to(socket.myTopic).emit('board-updated', board)
             broadcast({ type: 'board-updated', data: board, userId: socket.userId, room: board._id })
         })
